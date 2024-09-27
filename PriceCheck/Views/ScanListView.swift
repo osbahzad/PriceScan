@@ -17,12 +17,20 @@ struct ScanListView: View {
         ForEach(locationScans) { location in
           Section(header: Text(location.name), content: {
             ForEach(location.scans.sorted(by: { $0 < $1 })) { scan in
-              Text(scan.item)
+                NavigationLink(destination: ScanDetailView(scan: scan), label: {
+                    HStack{
+                        Text(scan.item)
+                        Spacer()
+                        Text(Helper.asCurrency(Double(scan.price)))
+                            .bold()
+                    }
+                               })
             }
           })
         }
       }.navigationBarTitle("Scans")
     }
+      
   }
 }
 

@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct AppView: View {
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+//            ScanListView()
+            ScanView()
+                .tabItem {
+                    Label("Scan Price", systemImage: "barcode")
+                }
+//            ScanView()
+            ScanListView()
+                .tabItem {
+                    Label("Saved Scans", systemImage: "list.bullet")
+                }
+        }
     }
 }
 
 #Preview {
     AppView()
 }
+
